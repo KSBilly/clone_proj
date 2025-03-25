@@ -1,5 +1,66 @@
-$bgColor: rgb(0, 255, 187);
+@use 'variaveis';
+@use 'hero';
 
-body {
-    background-color: $bgColor;
+@font-face{
+    font-family: avenir;
+    src: url(../fonts/Avenir-Regular.woff2);
+    font-weight: 400;
+}
+@font-face{
+    font-family: avenir;
+    src: url(../fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: variaveis.$corDeFundo;
+    font-family: avenir, sans-serif;
+}
+
+@mixin titulo($fontSize: 40px){
+    @include texto($fontSize);
+    color: variaveis.$corTextoSecundario;
+}
+
+//alterar ordens?
+
+@mixin texto($fontSize: 16px){
+    font-size: $fontSize;
+    font-weight: $fontSize+10px;
+    color: variaveis.$corTextoPrincipal;
+}
+
+.tittle--small{
+    @include titulo(36px);
+}
+
+.text--small{
+    @include texto(12px);
+}
+
+.tittle {
+    @include titulo;
+}
+
+.text {
+    @include texto;
+}
+
+.link-text {
+    @include texto(18px);
+    color:variaveis.$corTextoSecundario;
+    text-decoration: underline;
+}
+
+.tittle--big{
+    @include titulo(48px);
+}
+
+.text--big{
+    @include texto(18px);
 }
